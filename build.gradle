@@ -30,10 +30,12 @@ repositories {
 
 dependencies {
     implementation(group:'org.springframework.boot', name:'spring-boot-starter-web', version: springBootVersion)
+    implementation (group:'org.springframework.boot', name:'spring-boot-starter-data-jpa',version: springBootVersion)
     implementation(group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion)
     implementation(group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion)
-//    implementation(group: 'org.postgresql', name: 'postgresql', version: postgresqlVersion)
-//    implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion)
 
+    implementation 'org.flywaydb:flyway-core'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
