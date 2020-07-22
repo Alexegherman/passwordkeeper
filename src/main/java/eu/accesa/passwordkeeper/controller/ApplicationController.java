@@ -1,7 +1,7 @@
 package eu.accesa.passwordkeeper.controller;
 
-import eu.accesa.passwordkeeper.exception.ResourceNotFoundException;
 import eu.accesa.passwordkeeper.model.ApplicationModel;
+import eu.accesa.passwordkeeper.model.ApplicationRequest;
 import eu.accesa.passwordkeeper.service.ApplicationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,20 +37,16 @@ public class ApplicationController {
 
     @ApiOperation(value = "Create application")
     @PostMapping
-    public ApplicationModel createApplication(@RequestBody ApplicationModel applicationModel) {
-        return applicationService.createApplication(applicationModel);
+    public ApplicationModel createApplication(@RequestBody ApplicationRequest applicationRequest) {
+        return applicationService.createApplication(applicationRequest);
     }
 
-    @ApiOperation(value = "Update applicaiton")
+    @ApiOperation(value = "Update application")
     @PutMapping("/{applicationName}")
-    public ApplicationModel updateApplication(@ApiParam(value = "Unique identifier -application name", example = "outlook")
-                                                  @PathVariable String applicationName,
-                                              @RequestBody ApplicationModel applicationModel) {
-        if (applicationName.equals("accesa")) {
-            throw new ResourceNotFoundException("resource.not.found", applicationName);
-        }
-
-        return applicationService.updateApplication(applicationName, applicationModel);
+    public ApplicationModel updateApplication(@ApiParam(value = "Unique identifier - application name", example = "outlook")
+                                              @PathVariable String applicationName,
+                                              @RequestBody ApplicationRequest applicationRequest) {
+        return applicationService.updateApplication(applicationName, applicationRequest);
     }
 
 }

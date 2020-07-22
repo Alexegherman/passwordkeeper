@@ -5,6 +5,6 @@ services:
   database:
     image: "postgres" # use latest official postgres version
     ports:
-      - "5432:5432"
+      - "5432:5433"
     env_file:
           - database.env # configure postgres

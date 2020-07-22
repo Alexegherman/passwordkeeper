@@ -1,0 +1,7 @@
+
+CREATE TABLE application(
+id SERIAL NOT NULL PRIMARY KEY ,
+name VARCHAR (50) NOT NULL,
+url VARCHAR (200) NOT NULL,
+CONSTRAINT uk_name_application UNIQUE (name)
+);
